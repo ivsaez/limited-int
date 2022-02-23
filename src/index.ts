@@ -1,6 +1,71 @@
-function hello(name: string = "Sergio"): string {
-    return `Hello, ${name}`;
+const DefaultMin = 0;
+const DefaultMax = 100;
+
+export default class LimitedInt {
+  private _min: number;
+  private _max: number;
+  private _value: number;
+ 
+  constructor(value: number, max: number = DefaultMax, min: number = DefaultMin) {
+    if(min >= max) throw new Error("Minimum value must be smaller than maximum value.");
+
+    this._value = value;
+    this._max = max;
+    this._min = min;
+
+    this.limitValue();
   }
-  
-  export default hello;
-  
+ 
+  get max(){
+    return this._max;
+  }
+
+  get min(){
+    return this._min;
+  }
+
+  get value(){
+    return this._value;
+  }
+
+  set value(value){
+    this._value = value;
+
+    this.limitValue();
+  }
+
+  isMax(): boolean{
+    return this._value == this._max;
+  }
+
+  isMin(): boolean{
+    return this._value == this._min;
+  }
+
+  increase(amount: number): void{
+    this._value += amount;
+    this.limitValue();
+  }
+
+  decrease(amount: number): void{
+    this._value -= amount;
+    this.limitValue();
+  }
+
+  maximizeValue(): void{
+    this._value = this._max;
+  }
+
+  minimizeValue(): void{
+    this._value = this._min;
+  }
+
+  copy(): LimitedInt{
+    return new LimitedInt(this._value, this._max, this._min);
+  }
+
+  private limitValue(): void{
+    if (this._value > this._max) this._value = this._max;
+    if (this._value < this._min) this._value = this._min;
+  }
+}
