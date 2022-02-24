@@ -1,13 +1,12 @@
 {
   "name": "limited-int",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Limited integer class.",
   "main": "dist/index.js",
   "type": "commonjs",
   "types": "./dist/index.d.ts",
   "umd:main": "dist/index.umd.js",
   "module": "dist/index.mjs",
-  "exports": "./dist/index.js",
   "source": "src/index.ts",
   "scripts": {
     "test": "jest",
