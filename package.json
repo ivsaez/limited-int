@@ -1,6 +1,6 @@
 {
   "name": "limited-int",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Limited integer class.",
   "main": "dist/index.js",
   "type": "commonjs",
