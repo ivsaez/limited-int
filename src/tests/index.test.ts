@@ -56,6 +56,20 @@ describe("LimitedInt should", () => {
     expect(limitedInt.value).toBe(40);
   });
 
+  it("increase percentage", () => {
+    let limitedInt = new LimitedInt(50);
+    limitedInt.increasePercentage(10);
+
+    expect(limitedInt.value).toBe(55);
+  });
+
+  it("decrease percentage", () => {
+    let limitedInt = new LimitedInt(50);
+    limitedInt.decreasePercentage(10);
+
+    expect(limitedInt.value).toBe(45);
+  });
+
   it("increase value limiting it", () => {
     let limitedInt = new LimitedInt(95);
     limitedInt.increase(10);

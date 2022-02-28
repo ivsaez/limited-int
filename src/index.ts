@@ -52,6 +52,16 @@ export default class LimitedInt {
     this.limitValue();
   }
 
+  increasePercentage(percentage: number): void{
+    let amount = this.calculatePercentage(this._value, percentage);
+    this.increase(amount);
+  }
+
+  decreasePercentage(percentage: number): void{
+    let amount = this.calculatePercentage(this._value, percentage);
+    this.decrease(amount);
+  }
+
   maximizeValue(): void{
     this._value = this._max;
   }
@@ -67,5 +77,9 @@ export default class LimitedInt {
   private limitValue(): void{
     if (this._value > this._max) this._value = this._max;
     if (this._value < this._min) this._value = this._min;
+  }
+
+  private calculatePercentage(value: number, percentage: number): number{
+    return (value * percentage) / 100;
   }
 }
